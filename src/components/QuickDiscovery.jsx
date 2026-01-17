@@ -1,17 +1,19 @@
+import { FaSeedling, FaGlobeAmericas, FaLeaf } from 'react-icons/fa';
+
 export default function QuickDiscovery() {
   const discoveryCategories = [
     {
-      icon: "🌼",
+      icon: <FaSeedling className="text-4xl mx-auto" />,
       title: "By Type",
       items: ["Trees", "Flowers", "Herbs", "Succulents", "Ferns", "Grasses"]
     },
     {
-      icon: "🌍",
+      icon: <FaGlobeAmericas className="text-4xl mx-auto" />,
       title: "By Habitat",
       items: ["Tropical", "Desert", "Aquatic", "Mountain", "Forest", "Coastal"]
     },
     {
-      icon: "🌿",
+      icon: <FaLeaf className="text-4xl mx-auto" />,
       title: "By Use",
       items: ["Medicinal", "Edible", "Ornamental", "Indoor", "Aromatic", "Textile"]
     }
@@ -53,7 +55,7 @@ export default function QuickDiscovery() {
               <div key={index} className="bg-white border-2 border-black hover:border-[#628141] transition-all duration-300 group shadow-lg">
                 <div className="p-8">
                   <div className="text-center mb-6">
-                    <div className="text-4xl mb-4">{category.icon}</div>
+                    <div className="mb-4 text-[#628141]">{category.icon}</div>
                     <h3 className="text-2xl font-bold text-black group-hover:text-[#628141] transition-colors">
                       {category.title}
                     </h3>

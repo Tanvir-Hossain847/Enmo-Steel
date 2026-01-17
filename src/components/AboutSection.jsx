@@ -1,22 +1,24 @@
+import { FaGraduationCap, FaGlobeAmericas, FaMicroscope, FaSeedling, FaUserGraduate, FaLeaf, FaTree, FaUser } from 'react-icons/fa';
+
 export default function AboutSection() {
   const missionPoints = [
     {
-      icon: "🎓",
+      icon: <FaGraduationCap className="text-3xl mx-auto" />,
       title: "Educational Excellence",
       description: "Providing accurate, scientifically-backed information for students, researchers, and plant enthusiasts worldwide."
     },
     {
-      icon: "🌍",
+      icon: <FaGlobeAmericas className="text-3xl mx-auto" />,
       title: "Global Accessibility",
       description: "Making botanical knowledge freely available to everyone, regardless of location or background."
     },
     {
-      icon: "🔬",
+      icon: <FaMicroscope className="text-3xl mx-auto" />,
       title: "Scientific Accuracy",
       description: "All content is reviewed by certified botanists and updated with the latest research findings."
     },
     {
-      icon: "🌱",
+      icon: <FaSeedling className="text-3xl mx-auto" />,
       title: "Conservation Awareness",
       description: "Promoting plant conservation and environmental stewardship through education and awareness."
     }
@@ -33,22 +35,22 @@ export default function AboutSection() {
 
   const targetAudience = [
     {
-      icon: "👨‍🎓",
+      icon: <FaUserGraduate className="text-4xl mx-auto" />,
       title: "Students & Researchers",
       description: "From high school biology to PhD research, find reliable botanical information for academic work."
     },
     {
-      icon: "🌿",
+      icon: <FaLeaf className="text-4xl mx-auto" />,
       title: "Gardening Enthusiasts",
       description: "Home gardeners seeking to understand and better care for their plants."
     },
     {
-      icon: "🌳",
+      icon: <FaTree className="text-4xl mx-auto" />,
       title: "Nature Lovers",
       description: "Curious minds who want to learn about the incredible diversity of plant life."
     },
     {
-      icon: "👩‍🏫",
+      icon: <FaUser className="text-4xl mx-auto" />,
       title: "Educators",
       description: "Teachers and professors looking for comprehensive botanical resources for their curriculum."
     }
@@ -76,16 +78,16 @@ export default function AboutSection() {
               Our Mission & Purpose
             </h2>
             <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="h-px w-20 bg-secondary"></div>
+              <div className="h-px w-20 bg-[#628141]"></div>
               <p className="text-lg text-gray-600">
                 Building the world's most comprehensive plant encyclopedia
               </p>
-              <div className="h-px w-20 bg-secondary"></div>
+              <div className="h-px w-20 bg-[#628141]"></div>
             </div>
           </div>
 
           {/* Mission Statement */}
-          <div className="bg-accent/20 border-2 border-black p-8 mb-16 text-center">
+          <div className="bg-[#628141]/20 border-2 border-black p-8 mb-16 text-center">
             <h3 className="text-2xl font-bold text-black mb-6">
               Our Vision
             </h3>
@@ -97,7 +99,7 @@ export default function AboutSection() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {missionPoints.map((point, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-3xl mb-3">{point.icon}</div>
+                  <div className="text-[#628141] mb-3">{point.icon}</div>
                   <h4 className="text-lg font-bold text-black mb-2">
                     {point.title}
                   </h4>
@@ -123,7 +125,7 @@ export default function AboutSection() {
               <div className="space-y-3">
                 {dataSources.map((source, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-secondary rounded-full flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#628141] rounded-full flex-shrink-0"></div>
                     <span className="text-gray-700">{source}</span>
                   </div>
                 ))}
@@ -166,10 +168,10 @@ export default function AboutSection() {
               {targetAudience.map((audience, index) => (
                 <div 
                   key={index}
-                  className="text-center bg-white border-2 border-black hover:border-secondary transition-all duration-300 group p-6"
+                  className="text-center bg-white border-2 border-black hover:border-[#628141] transition-all duration-300 group p-6"
                 >
-                  <div className="text-4xl mb-4">{audience.icon}</div>
-                  <h4 className="text-lg font-bold text-black group-hover:text-secondary transition-colors mb-3">
+                  <div className="text-[#628141] mb-4">{audience.icon}</div>
+                  <h4 className="text-lg font-bold text-black group-hover:text-[#628141] transition-colors mb-3">
                     {audience.title}
                   </h4>
                   <p className="text-sm text-gray-700 leading-relaxed">
@@ -181,25 +183,25 @@ export default function AboutSection() {
           </div>
 
           {/* Statistics */}
-          <div className="bg-secondary/10 border-2 border-black p-8 mb-16">
+          <div className="bg-[#628141]/10 border-2 border-black p-8 mb-16">
             <h3 className="text-2xl font-bold text-black text-center mb-8">
               PlantPedia by the Numbers
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-4xl font-bold text-secondary mb-2">500K+</div>
+                <div className="text-4xl font-bold text-[#628141] mb-2">500K+</div>
                 <div className="text-sm text-gray-600 uppercase tracking-wide">Plant Species</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-secondary mb-2">2M+</div>
+                <div className="text-4xl font-bold text-[#628141] mb-2">2M+</div>
                 <div className="text-sm text-gray-600 uppercase tracking-wide">Monthly Users</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-secondary mb-2">150+</div>
+                <div className="text-4xl font-bold text-[#628141] mb-2">150+</div>
                 <div className="text-sm text-gray-600 uppercase tracking-wide">Countries Served</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-secondary mb-2">50+</div>
+                <div className="text-4xl font-bold text-[#628141] mb-2">50+</div>
                 <div className="text-sm text-gray-600 uppercase tracking-wide">Expert Contributors</div>
               </div>
             </div>
@@ -216,7 +218,7 @@ export default function AboutSection() {
               exploring the fascinating world of botany.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn btn-secondary btn-lg text-white hover:bg-secondary/90">
+              <button className="btn bg-[#628141] btn-lg text-white">
                 Start Exploring
               </button>
               <button className="btn btn-outline btn-lg border-2 border-black hover:bg-black hover:text-white">

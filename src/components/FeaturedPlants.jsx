@@ -1,8 +1,10 @@
+import { FaStar, FaLeaf, FaSeedling } from 'react-icons/fa';
+
 export default function FeaturedPlants() {
   const featuredSections = [
     {
       title: "Most Viewed Plants",
-      icon: "🌟",
+      icon: <FaStar className="text-3xl" />,
       plants: [
         {
           commonName: "Aloe Vera",
@@ -23,7 +25,7 @@ export default function FeaturedPlants() {
     },
     {
       title: "Plants of the Week",
-      icon: "🌿",
+      icon: <FaLeaf className="text-3xl" />,
       plants: [
         {
           commonName: "Monstera Deliciosa",
@@ -44,7 +46,7 @@ export default function FeaturedPlants() {
     },
     {
       title: "Seasonal Highlights",
-      icon: "🌸",
+      icon: <FaSeedling className="text-3xl" />,
       plants: [
         {
           commonName: "Winter Jasmine",
@@ -79,11 +81,11 @@ export default function FeaturedPlants() {
               Discover Amazing Plants
             </h2>
             <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="h-px w-20 bg-secondary"></div>
+              <div className="h-px w-20 bg-[#628141]"></div>
               <p className="text-lg text-black">
                 Curated selections from our extensive database
               </p>
-              <div className="h-px w-20 bg-secondary"></div>
+              <div className="h-px w-20 bg-[#628141]"></div>
             </div>
           </div>
 
@@ -92,7 +94,7 @@ export default function FeaturedPlants() {
             {featuredSections.map((section, sectionIndex) => (
               <div key={sectionIndex}>
                 <div className="flex items-center gap-3 mb-8">
-                  <span className="text-3xl">{section.icon}</span>
+                  <span className="text-[#628141]">{section.icon}</span>
                   <h3 className="text-2xl md:text-3xl font-bold text-black">
                     {section.title}
                   </h3>
@@ -102,16 +104,16 @@ export default function FeaturedPlants() {
                   {section.plants.map((plant, plantIndex) => (
                     <div 
                       key={plantIndex}
-                      className="bg-white border-2 border-black hover:border-secondary transition-all duration-300 group cursor-pointer shadow-lg"
+                      className="bg-white border-2 border-black hover:border-[#628141] transition-all duration-300 group cursor-pointer shadow-lg"
                     >
-                      <div className="aspect-video bg-white border-b-2 border-black group-hover:border-secondary transition-colors">
-                        <div className="w-full h-full bg-secondary/10 flex items-center justify-center">
-                          <div className="text-secondary text-6xl">🌱</div>
+                      <div className="aspect-video bg-white border-b-2 border-black group-hover:border-[#628141] transition-colors">
+                        <div className="w-full h-full bg-[#628141]/10 flex items-center justify-center">
+                          <FaLeaf className="text-6xl text-[#628141]" />
                         </div>
                       </div>
                       
                       <div className="p-6">
-                        <h4 className="text-xl font-bold text-black group-hover:text-secondary transition-colors mb-2">
+                        <h4 className="text-xl font-bold text-black group-hover:text-[#628141] transition-colors mb-2">
                           {plant.commonName}
                         </h4>
                         <p className="text-black italic text-sm mb-3">
@@ -121,7 +123,7 @@ export default function FeaturedPlants() {
                           {plant.fact}
                         </p>
                         
-                        <button className="btn btn-outline btn-sm mt-4 border-black hover:border-secondary hover:bg-secondary hover:text-white">
+                        <button className="btn btn-outline btn-sm mt-4 border-black hover:border-[#628141] hover:bg-[#628141] hover:text-white">
                           Learn More
                         </button>
                       </div>
@@ -134,7 +136,7 @@ export default function FeaturedPlants() {
 
           {/* Bottom CTA */}
           <div className="text-center mt-16">
-            <button className="btn btn-secondary btn-lg text-white hover:bg-secondary/90 shadow-lg">
+            <button className="btn bg-[#628141] text-white btn-lg shadow-lg">
               View All Featured Plants
             </button>
           </div>

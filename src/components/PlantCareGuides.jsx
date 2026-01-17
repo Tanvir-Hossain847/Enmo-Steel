@@ -1,7 +1,9 @@
+import { FaTint, FaSun, FaSeedling, FaBug, FaCut, FaLeaf } from 'react-icons/fa';
+
 export default function PlantCareGuides() {
   const careGuides = [
     {
-      icon: "💧",
+      icon: <FaTint className="text-4xl mx-auto" />,
       title: "Watering Wisdom",
       description: "Master the art of proper plant hydration with our comprehensive watering guide.",
       tips: [
@@ -13,7 +15,7 @@ export default function PlantCareGuides() {
       difficulty: "Beginner"
     },
     {
-      icon: "☀️",
+      icon: <FaSun className="text-4xl mx-auto" />,
       title: "Light Requirements",
       description: "Understand how to provide the perfect lighting conditions for healthy plant growth.",
       tips: [
@@ -25,7 +27,7 @@ export default function PlantCareGuides() {
       difficulty: "Beginner"
     },
     {
-      icon: "🌱",
+      icon: <FaSeedling className="text-4xl mx-auto" />,
       title: "Soil & Nutrition",
       description: "Learn about soil types, drainage, and feeding schedules for optimal plant health.",
       tips: [
@@ -37,7 +39,7 @@ export default function PlantCareGuides() {
       difficulty: "Intermediate"
     },
     {
-      icon: "🦠",
+      icon: <FaBug className="text-4xl mx-auto" />,
       title: "Disease Prevention",
       description: "Identify common plant diseases early and learn effective treatment strategies.",
       tips: [
@@ -49,7 +51,7 @@ export default function PlantCareGuides() {
       difficulty: "Advanced"
     },
     {
-      icon: "✂️",
+      icon: <FaCut className="text-4xl mx-auto" />,
       title: "Pruning & Maintenance",
       description: "Keep your plants healthy and beautiful with proper pruning and maintenance techniques.",
       tips: [
@@ -61,7 +63,7 @@ export default function PlantCareGuides() {
       difficulty: "Intermediate"
     },
     {
-      icon: "🌿",
+      icon: <FaLeaf className="text-4xl mx-auto" />,
       title: "Propagation Basics",
       description: "Multiply your plant collection through various propagation methods and techniques.",
       tips: [
@@ -118,7 +120,7 @@ export default function PlantCareGuides() {
               >
                 <div className="p-6 h-full flex flex-col">
                   <div className="text-center mb-6">
-                    <div className="text-4xl mb-4">{guide.icon}</div>
+                    <div className="mb-4 text-[#628141]">{guide.icon}</div>
                     <h3 className="text-xl font-bold text-black group-hover:text-[#628141] transition-colors mb-2">
                       {guide.title}
                     </h3>

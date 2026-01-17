@@ -1,28 +1,30 @@
+import { FaSeedling, FaSun, FaGlobeAmericas, FaLeaf } from 'react-icons/fa';
+
 export default function LearnSection() {
   const learningTopics = [
     {
-      icon: "🌱",
+      icon: <FaSeedling className="text-4xl" />,
       title: "Plant Anatomy Basics",
       description: "Understand the fundamental structures that make plants work - from roots to leaves, and everything in between.",
       topics: ["Root Systems", "Stem Functions", "Leaf Structure", "Flower Parts"],
       readTime: "5 min read"
     },
     {
-      icon: "☀️",
+      icon: <FaSun className="text-4xl" />,
       title: "Photosynthesis Explained",
       description: "Discover how plants convert sunlight into energy and why this process is crucial for all life on Earth.",
       topics: ["Light Reactions", "Carbon Fixation", "Chlorophyll Role", "Energy Storage"],
       readTime: "7 min read"
     },
     {
-      icon: "🌍",
+      icon: <FaGlobeAmericas className="text-4xl" />,
       title: "Plant Adaptations",
       description: "Explore the incredible ways plants have evolved to survive in diverse environments around the world.",
       topics: ["Desert Survival", "Aquatic Life", "Cold Climates", "Tropical Rainforests"],
       readTime: "6 min read"
     },
     {
-      icon: "🌿",
+      icon: <FaLeaf className="text-4xl" />,
       title: "Plant Life Cycles",
       description: "Follow the journey from seed to mature plant, understanding reproduction and growth patterns.",
       topics: ["Germination", "Growth Phases", "Reproduction", "Seasonal Changes"],
@@ -73,7 +75,7 @@ export default function LearnSection() {
               >
                 <div className="p-8">
                   <div className="flex items-start gap-4 mb-6">
-                    <div className="text-4xl">{topic.icon}</div>
+                    <div className="text-[#628141]">{topic.icon}</div>
                     <div className="flex-1">
                       <h3 className="text-2xl font-bold text-black group-hover:text-[#628141] transition-colors mb-2">
                         {topic.title}
