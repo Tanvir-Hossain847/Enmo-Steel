@@ -2,7 +2,40 @@
 @plugin "daisyui";
 
 @theme {
-  --color-primary: #1B211A;
+  --color-primary: #000000;
   --color-secondary: #628141;
-  --color-accent: #F1F3E0;
+  --color-accent: #ffffff;
+}
+
+/* Override DaisyUI's default secondary color */
+:root {
+  --fallback-s: #628141;
+  --s: #628141;
+}
+
+/* Custom animations for enhanced hero section */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
 }

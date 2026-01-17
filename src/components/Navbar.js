@@ -11,10 +11,10 @@ export default function Navbar() {
           </div>
           
           <div className="hidden md:flex space-x-10">
-            <a href="#home" className="text-black font-medium hover:text-secondary transition-colors">Home</a>
-            <a href="#plants" className="text-black font-medium hover:text-secondary transition-colors">Plants</a>
-            <a href="#about" className="text-black font-medium hover:text-secondary transition-colors">About</a>
-            <a href="#contact" className="text-black font-medium hover:text-secondary transition-colors">Contact</a>
+            <a href="#home" className="text-black font-medium hover:text-[#628141] transition-colors">Home</a>
+            <a href="#plants" className="text-black font-medium hover:text-[#628141] transition-colors">Plants</a>
+            <a href="#about" className="text-black font-medium hover:text-[#628141] transition-colors">About</a>
+            <a href="#contact" className="text-black font-medium hover:text-[#628141] transition-colors">Contact</a>
           </div>
 
           <button className="md:hidden text-black">
