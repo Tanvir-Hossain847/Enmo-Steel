@@ -1,104 +1,24 @@
-import { NextResponse } from 'next/server';
-import clientPromise from '@/lib/mongodb';
-
-// GET /api/plants - Get all plants with optional filtering
-export async function GET(request) {
+export async function GET() {
   try {
-    const client = await clientPromise;
-    const db = client.db('plantpedia');
-    const { searchParams } = new URL(request.url);
-    
-    // Build query based on search parameters
-    const query = {};
-    const limit = parseInt(searchParams.get('limit')) || 20;
-    const page = parseInt(searchParams.get('page')) || 1;
-    const skip = (page - 1) * limit;
-    
-    // Search functionality
-    const search = searchParams.get('search');
-    if (search) {
-      query.$or = [
-        { commonName: { $regex: search, $options: 'i' } },
-        { scientificName: { $regex: search, $options: 'i' } },
-        { family: { $regex: search, $options: 'i' } }
-      ];
-    }
-    
-    // Filter by type
-    const type = searchParams.get('type');
-    if (type) {
-      query.type = type;
-    }
-    
-    // Filter by habitat
-    const habitat = searchParams.get('habitat');
-    if (habitat) {
-      query.habitat = { $in: [habitat] };
-    }
-    
-    // Filter by use
-    const use = searchParams.get('use');
-    if (use) {
-      query.uses = { $in: [use] };
-    }
-    
-    // Filter by safety
-    const safety = searchParams.get('safety');
-    if (safety) {
-      query.safety = { $in: [safety] };
-    }
-    
-    const plants = await db
-      .collection('plants')
-      .find(query)
-      .skip(skip)
-      .limit(limit)
-      .toArray();
-    
-    const total = await db.collection('plants').countDocuments(query);
-    
-    return NextResponse.json({
-      plants,
-      pagination: {
-        page,
-        limit,
-        total,
-        pages: Math.ceil(total / limit)
-      }
-    });
-  } catch (error) {
-    console.error('Database Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch plants' },
-      { status: 500 }
+    const res = await fetch(
+      `https://trefle.io/api/v1/plants?token=${process.env.NEXT_PUBLIC_TREFLE_TOKEN}`,
+      { cache: 'no-store' }
     );
-  }
-}
 
-// POST /api/plants - Create a new plant
-export async function POST(request) {
-  try {
-    const client = await clientPromise;
-    const db = client.db('plantpedia');
-    const body = await request.json();
-    
-    const plant = {
-      ...body,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      views: 0
-    };
-    
-    const result = await db.collection('plants').insertOne(plant);
-    
-    return NextResponse.json({
-      message: 'Plant created successfully',
-      plantId: result.insertedId
-    }, { status: 201 });
+    if (!res.ok) {
+      return Response.json(
+        { error: 'Failed to fetch featured plants' },
+        { status: res.status }
+      );
+    }
+
+    const data = await res.json();
+
+    // Optional: pick top 8 featured plants
+    return Response.json(data.data.slice(0, 25));
   } catch (error) {
-    console.error('Database Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to create plant' },
+    return Response.json(
+      { error: 'Server error fetching featured plants' },
       { status: 500 }
     );
   }

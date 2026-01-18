@@ -1,77 +1,51 @@
+"use client"
+
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { FaStar, FaLeaf, FaSeedling } from 'react-icons/fa';
 
 export default function FeaturedPlants() {
-  const featuredSections = [
-    {
-      title: "Most Viewed Plants",
-      icon: <FaStar className="text-3xl" />,
-      plants: [
-        {
-          commonName: "Aloe Vera",
-          scientificName: "Aloe barbadensis",
-          fact: "Can survive without water for up to 3 months"
-        },
-        {
-          commonName: "Snake Plant",
-          scientificName: "Sansevieria trifasciata",
-          fact: "Produces oxygen at night, perfect for bedrooms"
-        },
-        {
-          commonName: "Peace Lily",
-          scientificName: "Spathiphyllum wallisii",
-          fact: "NASA's top air-purifying plant"
-        }
-      ]
-    },
-    {
-      title: "Plants of the Week",
-      icon: <FaLeaf className="text-3xl" />,
-      plants: [
-        {
-          commonName: "Monstera Deliciosa",
-          scientificName: "Monstera deliciosa",
-          fact: "Leaves develop holes as the plant matures"
-        },
-        {
-          commonName: "Fiddle Leaf Fig",
-          scientificName: "Ficus lyrata",
-          fact: "Can grow up to 50 feet tall in its native habitat"
-        },
-        {
-          commonName: "Rubber Plant",
-          scientificName: "Ficus elastica",
-          fact: "Originally used to make rubber before synthetic alternatives"
-        }
-      ]
-    },
-    {
-      title: "Seasonal Highlights",
-      icon: <FaSeedling className="text-3xl" />,
-      plants: [
-        {
-          commonName: "Winter Jasmine",
-          scientificName: "Jasminum nudiflorum",
-          fact: "Blooms in winter when most plants are dormant"
-        },
-        {
-          commonName: "Holly",
-          scientificName: "Ilex aquifolium",
-          fact: "Berries provide food for birds during winter months"
-        },
-        {
-          commonName: "Poinsettia",
-          scientificName: "Euphorbia pulcherrima",
-          fact: "Red 'flowers' are actually modified leaves called bracts"
-        }
-      ]
+  const [plants, setPlants] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // const TREFLE_TOKEN = process.env.NEXT_PUBLIC_TREFLE_TOKEN;
+  const API_URL = `/api/plants/featured`;
+
+  useEffect(() => {
+    async function fetchPlants() {
+      try {
+        const res = await fetch(API_URL);
+        const json = await res.json();
+
+        setPlants(json);
+      } catch (error) {
+        console.error('Error fetching plants:', error);
+      } finally {
+        setLoading(false);
+      }
     }
-  ];
+
+    fetchPlants();
+  }, []);
+
+  console.log(plants);
+
+
+
+  if (loading) {
+    return (
+      <section className="py-20 text-center">
+        <p className="text-xl">Loading plants… 🌱</p>
+      </section>
+    );
+  }
+
 
   return (
     <section className="py-20 bg-white relative">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
-          
+
           {/* Section Header */}
           <div className="text-center mb-16">
             <div className="text-sm text-black uppercase tracking-widest mb-4">
@@ -89,56 +63,90 @@ export default function FeaturedPlants() {
             </div>
           </div>
 
-          {/* Featured Sections */}
-          <div className="space-y-16">
-            {featuredSections.map((section, sectionIndex) => (
-              <div key={sectionIndex}>
-                <div className="flex items-center gap-3 mb-8">
-                  <span className="text-[#628141]">{section.icon}</span>
-                  <h3 className="text-2xl md:text-3xl font-bold text-black">
-                    {section.title}
-                  </h3>
-                </div>
-                
-                <div className="grid md:grid-cols-3 gap-8">
-                  {section.plants.map((plant, plantIndex) => (
-                    <div 
-                      key={plantIndex}
-                      className="bg-white border-2 border-black hover:border-[#628141] transition-all duration-300 group cursor-pointer shadow-lg"
-                    >
-                      <div className="aspect-video bg-white border-b-2 border-black group-hover:border-[#628141] transition-colors">
-                        <div className="w-full h-full bg-[#628141]/10 flex items-center justify-center">
-                          <FaLeaf className="text-6xl text-[#628141]" />
-                        </div>
-                      </div>
-                      
-                      <div className="p-6">
-                        <h4 className="text-xl font-bold text-black group-hover:text-[#628141] transition-colors mb-2">
-                          {plant.commonName}
-                        </h4>
-                        <p className="text-black italic text-sm mb-3">
-                          {plant.scientificName}
-                        </p>
-                        <p className="text-black text-sm leading-relaxed">
-                          {plant.fact}
-                        </p>
-                        
-                        <button className="btn btn-outline btn-sm mt-4 border-black hover:border-[#628141] hover:bg-[#628141] hover:text-white">
-                          Learn More
-                        </button>
-                      </div>
+          {/* Featured Plants Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {plants.map((plant) => (
+              <div
+                key={plant.id}
+                className="bg-white border-2 border-black hover:border-[#628141] transition-all duration-300 group shadow-lg"
+              >
+                {/* Image */}
+                <div className="aspect-square border-b-2 border-black group-hover:border-[#628141] transition-colors">
+                  {plant.image_url ? (
+                    <img
+                      src={plant.image_url}
+                      alt={plant.common_name || 'Plant'}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-[#628141]/10 flex items-center justify-center">
+                      <FaLeaf className="text-6xl text-[#628141]" />
                     </div>
-                  ))}
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="p-6 space-y-3">
+                  {/* Names */}
+                  <div>
+                    <h4 className="text-xl font-bold text-black group-hover:text-[#628141] transition-colors leading-tight">
+                      {plant.common_name || 'Unknown Plant'}
+                    </h4>
+                    <p className="text-black italic text-sm">
+                      {plant.scientific_name || 'Scientific name unavailable'}
+                    </p>
+                  </div>
+
+                  {/* Meta Info */}
+                  <div className="text-sm text-black space-y-1">
+                    {plant.family && (
+                      <p>
+                        <span className="font-semibold">Family:</span> {plant.family}
+                      </p>
+                    )}
+
+                    {plant.rank && (
+                      <p>
+                        <span className="font-semibold">Rank:</span> {plant.rank}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {plant.edible && (
+                      <span className="px-2 py-1 text-xs border border-black">
+                         Edible
+                      </span>
+                    )}
+                    {plant.native && (
+                      <span className="px-2 py-1 text-xs border border-black">
+                         Native
+                      </span>
+                    )}
+                    {plant.growth_form && (
+                      <span className="px-2 py-1 text-xs border border-black">
+                        {plant.growth_form}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* CTA */}
+                  <button className="btn btn-outline btn-sm mt-3 border-black hover:border-[#628141] hover:bg-[#628141] hover:text-white">
+                    Learn More
+                  </button>
                 </div>
               </div>
+
             ))}
           </div>
 
+
           {/* Bottom CTA */}
           <div className="text-center mt-16">
-            <button className="btn bg-[#628141] text-white btn-lg shadow-lg">
+            <Link href={`/plants/${plant.id}`} className="btn bg-[#628141] text-white btn-lg shadow-lg">
               View All Featured Plants
-            </button>
+            </Link>
           </div>
         </div>
       </div>

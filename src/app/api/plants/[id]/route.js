@@ -1,124 +1,29 @@
-import { NextResponse } from 'next/server';
-import { ObjectId } from 'mongodb';
-import clientPromise from '@/lib/mongodb';
+export async function GET({ params }) {
+  const { id } = params; // get the plant ID from the URL
 
-// GET /api/plants/[id] - Get a specific plant by ID
-export async function GET(request, { params }) {
   try {
-    const client = await clientPromise;
-    const db = client.db('plantpedia');
-    const { id } = params;
-    
-    if (!ObjectId.isValid(id)) {
-      return NextResponse.json(
-        { error: 'Invalid plant ID' },
-        { status: 400 }
-      );
-    }
-    
-    const plant = await db.collection('plants').findOne({
-      _id: new ObjectId(id)
-    });
-    
-    if (!plant) {
-      return NextResponse.json(
-        { error: 'Plant not found' },
-        { status: 404 }
-      );
-    }
-    
-    // Increment view count
-    await db.collection('plants').updateOne(
-      { _id: new ObjectId(id) },
-      { $inc: { views: 1 } }
+    // Fetch the plant from Trefle API
+    const res = await fetch(
+      `https://trefle.io/api/v1/plants/${id}?token=${process.env.NEXT_PUBLIC_TREFLE_TOKEN}`, // server-side token
+      { cache: 'no-store' }
     );
-    
-    return NextResponse.json(plant);
-  } catch (error) {
-    console.error('Database Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch plant' },
-      { status: 500 }
-    );
-  }
-}
 
-// PUT /api/plants/[id] - Update a specific plant
-export async function PUT(request, { params }) {
-  try {
-    const client = await clientPromise;
-    const db = client.db('plantpedia');
-    const { id } = params;
-    const body = await request.json();
-    
-    if (!ObjectId.isValid(id)) {
-      return NextResponse.json(
-        { error: 'Invalid plant ID' },
-        { status: 400 }
+    if (!res.ok) {
+      const text = await res.text(); // optional: get error text for debugging
+      return Response.json(
+        { error: 'Failed to fetch plant', details: text },
+        { status: res.status }
       );
     }
-    
-    const updateData = {
-      ...body,
-      updatedAt: new Date()
-    };
-    
-    const result = await db.collection('plants').updateOne(
-      { _id: new ObjectId(id) },
-      { $set: updateData }
-    );
-    
-    if (result.matchedCount === 0) {
-      return NextResponse.json(
-        { error: 'Plant not found' },
-        { status: 404 }
-      );
-    }
-    
-    return NextResponse.json({
-      message: 'Plant updated successfully'
-    });
-  } catch (error) {
-    console.error('Database Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to update plant' },
-      { status: 500 }
-    );
-  }
-}
 
-// DELETE /api/plants/[id] - Delete a specific plant
-export async function DELETE(request, { params }) {
-  try {
-    const client = await clientPromise;
-    const db = client.db('plantpedia');
-    const { id } = params;
-    
-    if (!ObjectId.isValid(id)) {
-      return NextResponse.json(
-        { error: 'Invalid plant ID' },
-        { status: 400 }
-      );
-    }
-    
-    const result = await db.collection('plants').deleteOne({
-      _id: new ObjectId(id)
-    });
-    
-    if (result.deletedCount === 0) {
-      return NextResponse.json(
-        { error: 'Plant not found' },
-        { status: 404 }
-      );
-    }
-    
-    return NextResponse.json({
-      message: 'Plant deleted successfully'
-    });
+    const data = await res.json();
+
+    // Return the single plant data
+    return Response.json(data.data);
   } catch (error) {
-    console.error('Database Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to delete plant' },
+    console.error('Error fetching plant by ID:', error);
+    return Response.json(
+      { error: 'Server error fetching plant' },
       { status: 500 }
     );
   }

@@ -114,15 +114,15 @@ export default function Hero() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto pt-12">
             <div className="border-2 border-black p-6 hover:border-[#628141] transition-all group bg-white shadow-lg">
-              <div className="text-5xl font-bold text-black group-hover:text-[#628141] transition-colors">500+</div>
+              <div className="text-4xl font-bold text-black group-hover:text-[#628141] transition-colors">500+</div>
               <div className="text-sm text-black mt-2 uppercase tracking-wide">Plant Species</div>
             </div>
             <div className="border-2 border-black p-6 hover:border-[#628141] transition-all group bg-white shadow-lg">
-              <div className="text-5xl font-bold text-black group-hover:text-[#628141] transition-colors">1000+</div>
+              <div className="text-4xl font-bold text-black group-hover:text-[#628141] transition-colors">1000+</div>
               <div className="text-sm text-black mt-2 uppercase tracking-wide">Uses Documented</div>
             </div>
             <div className="border-2 border-black p-6 hover:border-[#628141] transition-all group bg-white shadow-lg">
-              <div className="text-5xl font-bold text-black group-hover:text-[#628141] transition-colors">50+</div>
+              <div className="text-4xl font-bold text-black group-hover:text-[#628141] transition-colors">50+</div>
               <div className="text-sm text-black mt-2 uppercase tracking-wide">Categories</div>
             </div>
           </div>
