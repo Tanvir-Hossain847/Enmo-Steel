@@ -8,7 +8,6 @@ export default function FeaturedPlants() {
   const [plants, setPlants] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // const TREFLE_TOKEN = process.env.NEXT_PUBLIC_TREFLE_TOKEN;
   const API_URL = `/api/plants/featured`;
 
   useEffect(() => {
@@ -30,8 +29,6 @@ export default function FeaturedPlants() {
 
   console.log(plants);
 
-
-
   if (loading) {
     return (
       <section className="py-20 text-center">
@@ -40,6 +37,13 @@ export default function FeaturedPlants() {
     );
   }
 
+  if (!plants || plants.length === 0) {
+    return (
+      <section className="py-20 text-center">
+        <p className="text-xl">No plants available</p>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 bg-white relative">
@@ -66,85 +70,86 @@ export default function FeaturedPlants() {
           {/* Featured Plants Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {plants.map((plant) => (
-              <div
+              <Link 
+                href={`/plants/${plant.id}`} 
                 key={plant.id}
-                className="bg-white border-2 border-black hover:border-[#628141] transition-all duration-300 group shadow-lg"
+                className="block"
               >
-                {/* Image */}
-                <div className="aspect-square border-b-2 border-black group-hover:border-[#628141] transition-colors">
-                  {plant.image_url ? (
-                    <img
-                      src={plant.image_url}
-                      alt={plant.common_name || 'Plant'}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-[#628141]/10 flex items-center justify-center">
-                      <FaLeaf className="text-6xl text-[#628141]" />
+                <div className="bg-white border-2 border-black hover:border-[#628141] transition-all duration-300 group shadow-lg cursor-pointer">
+                  {/* Image */}
+                  <div className="aspect-square border-b-2 border-black group-hover:border-[#628141] transition-colors">
+                    {plant.image_url ? (
+                      <img
+                        src={plant.image_url}
+                        alt={plant.common_name || 'Plant'}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-[#628141]/10 flex items-center justify-center">
+                        <FaLeaf className="text-6xl text-[#628141]" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 space-y-3">
+                    {/* Names */}
+                    <div>
+                      <h4 className="text-xl font-bold text-black group-hover:text-[#628141] transition-colors leading-tight">
+                        {plant.common_name || 'Unknown Plant'}
+                      </h4>
+                      <p className="text-black italic text-sm">
+                        {plant.scientific_name || 'Scientific name unavailable'}
+                      </p>
                     </div>
-                  )}
+
+                    {/* Meta Info */}
+                    <div className="text-sm text-black space-y-1">
+                      {plant.family && (
+                        <p>
+                          <span className="font-semibold">Family:</span> {plant.family}
+                        </p>
+                      )}
+
+                      {plant.rank && (
+                        <p>
+                          <span className="font-semibold">Rank:</span> {plant.rank}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {plant.edible && (
+                        <span className="px-2 py-1 text-xs border border-black">
+                          Edible
+                        </span>
+                      )}
+                      {plant.native && (
+                        <span className="px-2 py-1 text-xs border border-black">
+                          Native
+                        </span>
+                      )}
+                      {plant.growth_form && (
+                        <span className="px-2 py-1 text-xs border border-black">
+                          {plant.growth_form}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* CTA */}
+                    <div className="btn btn-outline btn-sm mt-3 border-black group-hover:border-[#628141] group-hover:bg-[#628141] group-hover:text-white w-full text-center">
+                      Learn More
+                    </div>
+                  </div>
                 </div>
-
-                {/* Content */}
-                <div className="p-6 space-y-3">
-                  {/* Names */}
-                  <div>
-                    <h4 className="text-xl font-bold text-black group-hover:text-[#628141] transition-colors leading-tight">
-                      {plant.common_name || 'Unknown Plant'}
-                    </h4>
-                    <p className="text-black italic text-sm">
-                      {plant.scientific_name || 'Scientific name unavailable'}
-                    </p>
-                  </div>
-
-                  {/* Meta Info */}
-                  <div className="text-sm text-black space-y-1">
-                    {plant.family && (
-                      <p>
-                        <span className="font-semibold">Family:</span> {plant.family}
-                      </p>
-                    )}
-
-                    {plant.rank && (
-                      <p>
-                        <span className="font-semibold">Rank:</span> {plant.rank}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {plant.edible && (
-                      <span className="px-2 py-1 text-xs border border-black">
-                         Edible
-                      </span>
-                    )}
-                    {plant.native && (
-                      <span className="px-2 py-1 text-xs border border-black">
-                         Native
-                      </span>
-                    )}
-                    {plant.growth_form && (
-                      <span className="px-2 py-1 text-xs border border-black">
-                        {plant.growth_form}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* CTA */}
-                  <button className="btn btn-outline btn-sm mt-3 border-black hover:border-[#628141] hover:bg-[#628141] hover:text-white">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-
+              </Link>
             ))}
           </div>
 
-
           {/* Bottom CTA */}
           <div className="text-center mt-16">
-            <Link href={`/plants/${plant.id}`} className="btn bg-[#628141] text-white btn-lg shadow-lg">
+            <Link href="/plants" className="btn bg-[#628141] text-white btn-lg shadow-lg inline-block">
               View All Featured Plants
             </Link>
           </div>

@@ -12,7 +12,7 @@ export default function Navbar() {
           </div>
           
           <div className="hidden md:flex space-x-10">
-            <a href="#home" className="text-black font-medium hover:text-[#628141] transition-colors">Home</a>
+            <Link href="/" className="text-black font-medium hover:text-[#628141] transition-colors">Home</Link>
             <Link href="/plants" className="text-black font-medium hover:text-[#628141] transition-colors">Plants</Link>
             <a href="#about" className="text-black font-medium hover:text-[#628141] transition-colors">About</a>
             <a href="#contact" className="text-black font-medium hover:text-[#628141] transition-colors">Contact</a>

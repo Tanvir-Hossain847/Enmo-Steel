@@ -10,14 +10,12 @@ import FeaturedPlants from "@/components/FeaturedPlants";
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <Navbar />
       <Hero />
       <QuickDiscovery />
       <FeaturedPlants />
       <LearnSection />
       <PlantCareGuides />
       <AboutSection />
-      <CTAFooter />
     </div>
   );
 }

@@ -72,7 +72,6 @@ export default function PlantGrid({ plants }) {
                         <div className="mt-2">
                             <Link
                                  href={`/plants/${plant.id}`} 
-                                target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn btn-outline btn-sm w-full border-black hover:border-[#628141] hover:bg-[#628141] hover:text-white"
                             >

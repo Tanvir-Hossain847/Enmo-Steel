@@ -37,9 +37,7 @@ export default function PlantsPage() {
 
   return (
     <section className="py-20 bg-white min-h-screen">
-        <div className="">
-            <h1>{plants.length}</h1>
-        </div>
+      
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Page Header */}
         <div className="text-center mb-16">
