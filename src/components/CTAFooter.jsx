@@ -1,159 +1,95 @@
-import { FaSeedling, FaSearch, FaBook, FaLeaf } from 'react-icons/fa';
+import { FaSeedling, FaSearch, FaBook, FaArrowRight, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 export default function CTAFooter() {
-  const ctaOptions = [
-    {
-      icon: <FaSeedling className="text-5xl mx-auto" />,
-      title: "Start Your Plant Journey",
-      description: "Begin exploring our vast collection of plant species and discover the wonders of botany.",
-      buttonText: "Explore Plants",
-      buttonStyle: "bg-[#628141] text-white"
-    },
-    {
-      icon: <FaSearch className="text-5xl mx-auto" />,
-      title: "Search Our Database",
-      description: "Use our advanced search tools to find specific plants or browse by characteristics.",
-      buttonText: "Search Plants",
-      buttonStyle: "btn-outline"
-    },
-    {
-      icon: <FaBook className="text-5xl mx-auto" />,
-      title: "Learn Something New",
-      description: "Dive into our educational resources and expand your botanical knowledge with our help",
-      buttonText: "Start Learning",
-      buttonStyle: "btn-outline"
-    }
-  ];
-
   return (
-    <section className="py-20 bg-[#628141]/10 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-[0.03]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle, black 1px, transparent 1px)',
-          backgroundSize: '30px 30px'
-        }}></div>
-      </div>
-      
-      {/* Floating Elements */}
-      <div className="absolute top-20 right-20 w-24 h-24 border border-[#628141]/20 rounded-full animate-pulse"></div>
-      <div className="absolute bottom-32 left-16 w-16 h-16 border border-[#628141]/30 rounded-full animate-bounce"></div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          
-          {/* Main CTA Header */}
-          <div className="text-center mb-16">
-            <div className="text-sm text-gray-500 uppercase tracking-widest mb-4">
-              Ready to Explore?
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold text-black mb-6">
-              Your Plant Adventure
-              <br />
-              <span className="text-[#628141]">Starts Here</span>
+    <footer className="bg-white border-t-4 border-black pt-24 pb-12">
+      <div className="container mx-auto px-4 max-w-7xl">
+        
+        {/* Main Action Grid */}
+        <div className="grid lg:grid-cols-2 gap-16 mb-24">
+          <div>
+            <h2 className="text-5xl md:text-6xl font-black text-black uppercase tracking-tighter leading-[0.9] mb-8">
+              Grow Your <br />
+              <span className="text-[#628141] italic font-light">Perspective.</span>
             </h2>
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="h-px w-20 bg-[#628141]"></div>
-              <p className="text-lg text-gray-600">
-                Join thousands discovering the plant kingdom
-              </p>
-              <div className="h-px w-20 bg-[#628141]"></div>
+            <p className="text-lg text-gray-600 font-medium max-w-md mb-10">
+              Join a global network of botanists, researchers, and enthusiasts 
+              documenting the world's flora.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button className="bg-black text-white px-8 py-4 font-black uppercase text-xs tracking-widest hover:bg-[#628141] transition-all flex items-center gap-3 group">
+                Begin Exploration <FaArrowRight className="group-hover:translate-x-2 transition-transform" />
+              </button>
+              <button className="border-2 border-black px-8 py-4 font-black uppercase text-xs tracking-widest hover:bg-black hover:text-white transition-all">
+                Database Search
+              </button>
             </div>
-            <p className="text-gray-700 max-w-2xl mx-auto leading-relaxed">
-              From curious beginners to expert botanists, PlantPedia offers the tools, 
-              knowledge, and community you need to explore the fascinating world of plants.
-            </p>
           </div>
 
-          {/* CTA Options */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {ctaOptions.map((option, index) => (
-              <div 
-                key={index}
-                className="bg-white border-2 border-black hover:border-[#628141] transition-all duration-300 group text-center shadow-lg"
-              >
-                <div className="p-8">
-                  <div className="text-[#628141] mb-6">{option.icon}</div>
-                  <h3 className="text-xl font-bold text-black group-hover:text-[#628141] transition-colors mb-4">
-                    {option.title}
-                  </h3>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    {option.description}
-                  </p>
-                  <button className={`btn ${option.buttonStyle} btn-lg w-full ${
-                    option.buttonStyle === 'btn-[#628141]' 
-                      ? 'border-2 border-black text-black hover:text-white hover:bg-black/90' 
-                      : 'border-2 border-black hover:bg-black hover:text-white'
-                  }`}>
-                    {option.buttonText}
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Newsletter Signup */}
-          <div className="bg-white border-2 border-black p-8 mb-12 text-center">
-            <h3 className="text-2xl font-bold text-black mb-4">
-              Stay Updated with Plant Discoveries
-            </h3>
-            <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-              Get weekly plant spotlights, care tips, and the latest botanical discoveries 
-              delivered straight to your inbox.
-            </p>
-            <div className="max-w-md mx-auto">
-              <div className="join w-full">
+          {/* Newsletter Panel */}
+          <div className="bg-gray-50 border-2 border-black p-8 md:p-12 relative overflow-hidden">
+            <div className="relative z-10">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-2">The Weekly Specimen</h3>
+              <p className="text-sm text-gray-500 font-medium mb-8">Latest discoveries and care protocols, delivered Friday.</p>
+              
+              <form className="flex flex-col gap-4">
                 <input 
                   type="email" 
-                  placeholder="Enter your email" 
-                  className="input input-bordered input-lg join-item flex-1 border-2 border-black focus:border-[#628141] focus:outline-none" 
+                  placeholder="Registry Email Address" 
+                  className="bg-white border-2 border-black p-4 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#628141]/20"
                 />
-                <button className="btn btn-[#628141] btn-lg join-item px-6 hover:text-white border-2 border-black hover:bg-[#628141]/90">
-                  Subscribe
+                <button className="w-full bg-[#628141] text-white py-4 font-black uppercase text-xs tracking-[0.2em] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
+                  Subscribe to Journal
                 </button>
-              </div>
-              <p className="text-xs text-gray-500 mt-2">
-                No spam, unsubscribe anytime. We respect your privacy.
-              </p>
+              </form>
+              <p className="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-widest">Scientific Privacy Guaranteed</p>
             </div>
-          </div>
-
-          {/* Social Proof */}
-          <div className="text-center mb-12">
-            <p className="text-gray-600 mb-6">
-              Trusted by plant enthusiasts worldwide
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              <div className="text-sm font-semibold text-gray-500">Universities</div>
-              <div className="w-px h-6 bg-gray-300"></div>
-              <div className="text-sm font-semibold text-gray-500">Botanical Gardens</div>
-              <div className="w-px h-6 bg-gray-300"></div>
-              <div className="text-sm font-semibold text-gray-500">Research Institutions</div>
-              <div className="w-px h-6 bg-gray-300"></div>
-              <div className="text-sm font-semibold text-gray-500">Garden Centers</div>
-            </div>
-          </div>
-
-          {/* Final CTA */}
-          <div className="text-center">
-            <div className="inline-flex items-center gap-4 bg-[#628141]/20 border-2 border-[#628141] px-8 py-4 mb-6">
-              <FaLeaf className="text-2xl text-[#628141]" />
-              <div className="text-left">
-                <div className="font-bold text-black">Ready to become a plant expert?</div>
-                <div className="text-sm text-gray-600">Start with just one plant today</div>
-              </div>
-            </div>
-            <div>
-              <button className="btn btn-[#628141] btn-lg hover:text-white hover:bg-[#628141]/90 shadow-lg mr-4">
-                Begin Your Journey
-              </button>
-              <button className="btn btn-outline btn-lg border-2 border-black hover:bg-black hover:text-white shadow-lg">
-                Browse Plants
-              </button>
-            </div>
+            <FaSeedling className="absolute -bottom-10 -right-10 text-[180px] text-black/[0.03] rotate-12" />
           </div>
         </div>
+
+        {/* Simplified Link Tree */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 border-t-2 border-black pt-16 mb-16">
+          <div>
+            <h4 className="font-black uppercase text-xs tracking-widest mb-6">Archive</h4>
+            <ul className="space-y-3 text-sm font-bold text-gray-500 uppercase tracking-tighter">
+              <li className="hover:text-black cursor-pointer">Plant Index</li>
+              <li className="hover:text-black cursor-pointer">Taxonomy</li>
+              <li className="hover:text-black cursor-pointer">Global Map</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-black uppercase text-xs tracking-widest mb-6">Academy</h4>
+            <ul className="space-y-3 text-sm font-bold text-gray-500 uppercase tracking-tighter">
+              <li className="hover:text-black cursor-pointer">Botany 101</li>
+              <li className="hover:text-black cursor-pointer">Research Papers</li>
+              <li className="hover:text-black cursor-pointer">Certifications</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-black uppercase text-xs tracking-widest mb-6">Support</h4>
+            <ul className="space-y-3 text-sm font-bold text-gray-500 uppercase tracking-tighter">
+              <li className="hover:text-black cursor-pointer">Methodology</li>
+              <li className="hover:text-black cursor-pointer">Contact</li>
+              <li className="hover:text-black cursor-pointer">Privacy</li>
+            </ul>
+          </div>
+          <div className="flex flex-col justify-between">
+             <div className="flex gap-4 text-xl">
+               <FaInstagram className="hover:text-[#628141] cursor-pointer" />
+               <FaTwitter className="hover:text-[#628141] cursor-pointer" />
+               <FaLinkedin className="hover:text-[#628141] cursor-pointer" />
+             </div>
+             <p className="text-[10px] font-black uppercase tracking-widest text-gray-300">© 2026 PlantPedia</p>
+          </div>
+        </div>
+
+        {/* Final Branding Mark */}
+        <div className="text-center opacity-10 pointer-events-none select-none">
+          <h1 className="text-[12vw] font-black uppercase tracking-tighter leading-none">PlantPedia</h1>
+        </div>
+
       </div>
-    </section>
+    </footer>
   );
 }

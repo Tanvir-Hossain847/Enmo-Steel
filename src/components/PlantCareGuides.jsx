@@ -1,178 +1,144 @@
-import { FaTint, FaSun, FaSeedling, FaBug, FaCut, FaLeaf } from 'react-icons/fa';
+import { FaTint, FaSun, FaSeedling, FaBug, FaCut, FaLeaf, FaChevronRight, FaClipboardCheck } from 'react-icons/fa';
 
 export default function PlantCareGuides() {
   const careGuides = [
     {
-      icon: <FaTint className="text-4xl mx-auto" />,
+      icon: <FaTint />,
       title: "Watering Wisdom",
       description: "Master the art of proper plant hydration with our comprehensive watering guide.",
-      tips: [
-        "Check soil moisture before watering",
-        "Water deeply but less frequently",
-        "Use room temperature water",
-        "Consider plant-specific needs"
-      ],
+      tips: ["Check soil moisture", "Water deeply/infrequently", "Room temperature only", "Species-specific needs"],
       difficulty: "Beginner"
     },
     {
-      icon: <FaSun className="text-4xl mx-auto" />,
-      title: "Light Requirements",
+      icon: <FaSun />,
+      title: "Light Optimization",
       description: "Understand how to provide the perfect lighting conditions for healthy plant growth.",
-      tips: [
-        "Identify your plant's light needs",
-        "Rotate plants for even growth",
-        "Use grow lights when needed",
-        "Watch for light stress signs"
-      ],
+      tips: ["Identify light levels", "Rotate for even growth", "Use grow lights", "Watch for light stress"],
       difficulty: "Beginner"
     },
     {
-      icon: <FaSeedling className="text-4xl mx-auto" />,
+      icon: <FaSeedling />,
       title: "Soil & Nutrition",
       description: "Learn about soil types, drainage, and feeding schedules for optimal plant health.",
-      tips: [
-        "Choose the right soil mix",
-        "Ensure proper drainage",
-        "Feed during growing season",
-        "Test soil pH regularly"
-      ],
+      tips: ["Choose the right mix", "Ensure proper drainage", "Feed during season", "Test pH regularly"],
       difficulty: "Intermediate"
     },
     {
-      icon: <FaBug className="text-4xl mx-auto" />,
+      icon: <FaBug />,
       title: "Disease Prevention",
       description: "Identify common plant diseases early and learn effective treatment strategies.",
-      tips: [
-        "Inspect plants regularly",
-        "Maintain good air circulation",
-        "Quarantine new plants",
-        "Use organic treatments first"
-      ],
+      tips: ["Regular inspections", "Maintain circulation", "Quarantine new plants", "Organic treatments"],
       difficulty: "Advanced"
     },
     {
-      icon: <FaCut className="text-4xl mx-auto" />,
-      title: "Pruning & Maintenance",
-      description: "Keep your plants healthy and beautiful with proper pruning and maintenance techniques.",
-      tips: [
-        "Use clean, sharp tools",
-        "Prune at the right time",
-        "Remove dead or diseased parts",
-        "Shape for better growth"
-      ],
+      icon: <FaCut />,
+      title: "Pruning Methods",
+      description: "Keep your plants healthy and beautiful with proper pruning techniques.",
+      tips: ["Use sharp tools", "Prune at right time", "Remove dead growth", "Shape for health"],
       difficulty: "Intermediate"
     },
     {
-      icon: <FaLeaf className="text-4xl mx-auto" />,
-      title: "Propagation Basics",
-      description: "Multiply your plant collection through various propagation methods and techniques.",
-      tips: [
-        "Choose healthy parent plants",
-        "Learn cutting techniques",
-        "Provide proper rooting conditions",
-        "Be patient with the process"
-      ],
+      icon: <FaLeaf />,
+      title: "Propagation",
+      description: "Multiply your plant collection through various propagation methods.",
+      tips: ["Healthy parent choice", "Cutting techniques", "Rooting conditions", "Patience is key"],
       difficulty: "Intermediate"
     }
   ];
 
-  const getDifficultyColor = (difficulty) => {
-    switch (difficulty) {
-      case 'Beginner': return 'bg-white text-black border-black';
-      case 'Intermediate': return 'bg-white text-black border-black';
-      case 'Advanced': return 'bg-white text-black border-black';
-      default: return 'bg-white text-black border-black';
-    }
-  };
-
   return (
-    <section className="py-20 bg-white relative">
-      <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto">
-          
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="text-sm text-black uppercase tracking-widest mb-4">
-              Practical Guidance
+    <section className="py-24 bg-white relative">
+      <div className="container mx-auto px-4 max-w-7xl">
+        
+        {/* Section Header - Styled for Clarity */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="bg-black text-white px-3 py-1 text-[10px] font-black uppercase tracking-widest">Protocol 04</span>
+              <div className="h-px w-12 bg-black"></div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-              Plant Care Guides
+            <h2 className="text-4xl md:text-5xl font-black text-black uppercase tracking-tighter leading-none mb-4">
+              Essential Care <span className="text-[#628141] italic">Guides</span>
             </h2>
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="h-px w-20 bg-[#628141]"></div>
-              <p className="text-lg text-black">
-                Everything you need to keep your plants thriving
-              </p>
-              <div className="h-px w-20 bg-[#628141]"></div>
-            </div>
-            <p className="text-black max-w-2xl mx-auto">
-              Whether you're a beginner or experienced gardener, our step-by-step guides 
-              will help you provide the best care for your green companions.
+            <p className="text-gray-600 font-medium leading-relaxed">
+              Step-by-step maintenance procedures designed to keep your specimens thriving in any environment.
             </p>
           </div>
-
-          {/* Care Guides Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {careGuides.map((guide, index) => (
-              <div 
-                key={index}
-                className="bg-white border-2 border-black hover:border-[#628141] transition-all duration-300 group cursor-pointer shadow-lg h-full"
-              >
-                <div className="p-6 h-full flex flex-col">
-                  <div className="text-center mb-6">
-                    <div className="mb-4 text-[#628141]">{guide.icon}</div>
-                    <h3 className="text-xl font-bold text-black group-hover:text-[#628141] transition-colors mb-2">
-                      {guide.title}
-                    </h3>
-                    <span className={`inline-block px-3 py-1 text-xs font-semibold border ${getDifficultyColor(guide.difficulty)}`}>
-                      {guide.difficulty}
-                    </span>
-                  </div>
-                  
-                  <p className="text-black text-sm mb-6 leading-relaxed flex-grow">
-                    {guide.description}
-                  </p>
-                  
-                  <div className="mb-6">
-                    <div className="text-sm font-semibold text-black mb-3">
-                      Key Tips:
-                    </div>
-                    <ul className="space-y-2">
-                      {guide.tips.map((tip, tipIndex) => (
-                        <li key={tipIndex} className="flex items-start gap-2 text-sm text-black">
-                          <div className="w-1.5 h-1.5 bg-[#628141] rounded-full mt-2 flex-shrink-0"></div>
-                          <span>{tip}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <button className="btn btn-outline btn-sm w-full border-black hover:border-[#628141] hover:bg-[#628141] hover:text-white transition-all mt-auto">
-                    Read Full Guide
-                  </button>
-                </div>
-              </div>
-            ))}
+          <div className="bg-gray-100 p-4 border-l-4 border-[#628141] hidden lg:block">
+            <p className="text-[10px] font-mono uppercase text-gray-500">Live Database Update</p>
+            <p className="text-xs font-bold text-black">Total Guides: 154 Verified</p>
           </div>
+        </div>
 
-          {/* Care Calendar CTA */}
-          <div className="bg-white border-2 border-black p-8 text-center">
-            <div className="max-w-3xl mx-auto">
-              <h3 className="text-2xl font-bold text-black mb-4">
-                Never Miss Plant Care Again
-              </h3>
-              <p className="text-black mb-6">
-                Get personalized care reminders and seasonal tips delivered to your inbox. 
-                Our plant care calendar helps you stay on top of watering, feeding, and maintenance schedules.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="btn bg-[#628141] text-white btn-lg hover:bg-[#628141]/90">
-                  Get Care Calendar
-                </button>
-                <button className="btn btn-outline btn-lg border-2 border-black hover:bg-black hover:text-white">
-                  Download Care Checklist
-                </button>
+        {/* Care Guides Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+          {careGuides.map((guide, index) => (
+            <div 
+              key={index}
+              className="group relative flex flex-col h-full border-b-4 border-black pb-8 hover:border-[#628141] transition-all"
+            >
+              {/* Difficulty Stamp */}
+              <div className="flex justify-between items-center mb-6">
+                <div className="text-2xl text-[#628141] group-hover:scale-110 transition-transform">
+                  {guide.icon}
+                </div>
+                <span className="px-2 py-0.5 border-2 border-black text-[10px] font-black uppercase tracking-tighter bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                  {guide.difficulty}
+                </span>
               </div>
+              
+              <h3 className="text-2xl font-black text-black uppercase mb-3 tracking-tight">
+                {guide.title}
+              </h3>
+              
+              <p className="text-sm text-gray-500 font-medium mb-6 leading-relaxed">
+                {guide.description}
+              </p>
+              
+              {/* Tips Checklist */}
+              <div className="bg-gray-50 p-5 border border-black/5 mb-8">
+                <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-4">Daily Checklist:</p>
+                <ul className="space-y-3">
+                  {guide.tips.map((tip, tipIndex) => (
+                    <li key={tipIndex} className="flex items-center gap-3 text-xs font-bold text-black uppercase tracking-tight">
+                      <div className="w-4 h-4 border border-black flex items-center justify-center bg-white group-hover:bg-[#628141] transition-colors">
+                        <div className="w-1.5 h-1.5 bg-black rounded-full opacity-20 group-hover:opacity-100"></div>
+                      </div>
+                      {tip}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <button className="mt-auto group/btn flex items-center justify-between text-xs font-black uppercase tracking-widest text-black hover:text-[#628141] transition-colors">
+                Open Maintenance Log
+                <FaChevronRight className="group-hover/btn:translate-x-2 transition-transform" />
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Care Calendar CTA - Boxed Content */}
+        <div className="mt-24 bg-black p-10 md:p-16 relative overflow-hidden">
+          {/* Decorative Icon */}
+          <FaClipboardCheck className="absolute -right-10 -bottom-10 text-[200px] text-white/5 rotate-12" />
+          
+          <div className="relative z-10 grid md:grid-cols-2 items-center gap-12">
+            <div>
+              <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter mb-4 leading-none">
+                Automated Care <br /><span className="text-[#628141]">Reminders</span>
+              </h3>
+              <p className="text-white/60 font-medium max-w-sm">
+                Get personalized care reminders and seasonal maintenance schedules delivered to your device.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="bg-[#628141] text-white px-8 py-4 font-black uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-all">
+                Sync My Calendar
+              </button>
+              <button className="bg-transparent border border-white/20 text-white px-8 py-4 font-black uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-all">
+                Care Checklist PDF
+              </button>
             </div>
           </div>
         </div>
