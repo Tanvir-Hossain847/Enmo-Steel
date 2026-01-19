@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FaSeedling, FaSearch, FaBook, FaArrowRight, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 export default function CTAFooter() {

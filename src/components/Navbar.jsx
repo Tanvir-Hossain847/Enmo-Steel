@@ -35,9 +35,9 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             {[
               { name: "Home", path: "/" },
-              { name: "Archive", path: "/plants" },
-              { name: "Protocols", path: "/contact" },
-              { name: "Institution", path: "/about" }
+              { name: "Archive", path: "/main/plants" },
+              { name: "Protocols", path: "/main/contact" },
+              { name: "Institution", path: "/main/about" }
             ].map((link) => (
               <Link 
                 key={link.name}
@@ -52,9 +52,13 @@ export default function Navbar() {
 
           {/* Action Button */}
           <div className="flex items-center gap-4">
-            <button className="hidden lg:block bg-black text-white px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#628141] transition-colors border-2 border-black shadow-[4px_4px_0px_0px_rgba(98,129,65,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-              Access Database
-            </button>
+            <Link href='/auth/login' className="hidden lg:block bg-black text-white px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#628141] transition-colors border-2 border-black shadow-[4px_4px_0px_0px_rgba(98,129,65,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+              Login
+            </Link>
+            
+            <Link href='/auth/register' className="hidden lg:block bg-black text-white px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#628141] transition-colors border-2 border-black shadow-[4px_4px_0px_0px_rgba(98,129,65,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+              Registration
+            </Link>
             
             {/* Mobile Menu Toggle */}
             <button className="md:hidden text-black p-2 border-2 border-black active:bg-gray-100">
