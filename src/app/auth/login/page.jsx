@@ -38,7 +38,7 @@ export default function LoginPage() {
       });
 
       // 4. Redirect to Dashboard/Archive
-      router.push('/plants');
+      router.push('/main/plants');
       
     } else {
       setError('AUTHENTICATION FAILED: INVALID CREDENTIALS');
